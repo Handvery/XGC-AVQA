@@ -1,10 +1,8 @@
 # XGC-AVQA
 
-Official dataset and implementation of **XGC-AVQA: A Mixed-Source Benchmark and Semantic-Prior-Based Modeling for No-Reference Audio-Visual Quality Assessment**.
+Official dataset and code of **XGC-AVQA: A Mixed-Source Benchmark and Semantic-Prior-Based Modeling for No-Reference Audio-Visual Quality Assessment**.
 
-Chenyang Zhang, Kaixuan Tian, Yiping Duan, Xiaoming Tao, and Chang Wen Chen
-
-**[Dataset](xxx) | [Code](https://github.com/Handvery/XGC-AVQA)**
+**[Dataset](https://drive.google.com/file/d/13H2mRU7suZzskdBtz-fCDPEAx9vfPx21/view?usp=drive_link) 
 
 ## Overview
 
@@ -18,12 +16,6 @@ XGC-AVQA is a mixed-source benchmark for no-reference audio-visual quality asses
 | UGC | 35 | 420 |
 | AIGC | 25 | 300 |
 | **Total** | **85** | **1,020** |
-
-- **Duration and resolution:** 6 seconds per clip; 1280 x 720 to 1920 x 1080.
-- **Video compression:** HEVC with CRF values of 20, 32, 37, and 47.
-- **Audio compression:** AAC at 128, 32, and 16 kbps.
-- **Distortion combinations:** 4 video levels x 3 audio levels per reference.
-- **Annotations:** Mean opinion scores (MOS) for audio, video, and overall audio-visual quality, collected from 20 participants.
 
 ## XGCAVNet
 
@@ -49,45 +41,4 @@ Run the workflow in the following order after configuring the dataset paths, fea
 | 5 | `fine_tune.py` | Add PRCM and fine-tune from Stage 1 checkpoints (Stage 2). |
 | 6 | `inference.py` | Evaluate trained checkpoints. |
 
-The current loaders expect a headerless `label.csv`, with filenames in the first column and overall MOS in the fourth column. Keep the 12 distorted versions of each reference consecutive in the CSV for content-level splitting with `group_size=12`.
 
-The default entry point of `fine_tune.py` prints a model summary. To launch Stage 2 training, call its training function directly after configuring the paths and device:
-
-```bash
-python -c "from fine_tune import main; main(DATASET='XGC-AVQA', group_size=12)" \
-  --pretrained_model_path /path/to/stage1/checkpoints
-```
-
-## Results
-
-Within-dataset results reported in the paper, averaged over 10 content-level 80/20 train/test splits:
-
-| Dataset | SRCC | PLCC | KRCC |
-| :--- | ---: | ---: | ---: |
-| XGC-AVQA | 0.9495 | 0.9527 | 0.8084 |
-| LIVE-SJTU | 0.9641 | 0.9684 | 0.8459 |
-| UnB-AVQ | 0.8923 | 0.9048 | 0.7849 |
-
-Cross-dataset evaluation, training on XGC-AVQA:
-
-| Test dataset | SRCC | PLCC | KRCC |
-| :--- | ---: | ---: | ---: |
-| LIVE-SJTU | 0.8633 | 0.8714 | 0.6830 |
-| UnB-AVQ | 0.7950 | 0.8055 | 0.6077 |
-
-## Citation
-
-If you use XGC-AVQA or XGCAVNet, please cite our work:
-
-```bibtex
-@misc{zhang2026xgcavqa,
-  title  = {{XGC-AVQA}: A Mixed-Source Benchmark and Semantic-Prior-Based Modeling for No-Reference Audio-Visual Quality Assessment},
-  author = {Zhang, Chenyang and Tian, Kaixuan and Duan, Yiping and Tao, Xiaoming and Chen, Chang Wen},
-  year   = {2026},
-  url    = {https://github.com/Handvery/XGC-AVQA}
-}
-```
-
-## Contact
-
-For questions, please open a [GitHub issue](https://github.com/Handvery/XGC-AVQA/issues) or contact [Chenyang Zhang](mailto:z-cy21@mails.tsinghua.edu.cn).
