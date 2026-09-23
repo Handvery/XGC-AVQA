@@ -2,7 +2,7 @@
 
 Official dataset and code of **XGC-AVQA: A Mixed-Source Benchmark and Semantic-Prior-Based Modeling for No-Reference Audio-Visual Quality Assessment**.
 
-**[Dataset](https://drive.google.com/file/d/13H2mRU7suZzskdBtz-fCDPEAx9vfPx21/view?usp=drive_link) 
+[Dataset](https://drive.google.com/file/d/13H2mRU7suZzskdBtz-fCDPEAx9vfPx21/view?usp=drive_link) 
 
 ## Overview
 
